@@ -8,6 +8,10 @@ Brian Okken
 
 Code and markdown for slides
 [github.com/okken/presentation_parametrization](https://github.com/okken/presentation_parametrization)
+
+Slides on slideshare
+[slideshare.net/testandcode](https://www.slideshare.net/testandcode/parametrized-testing-v2)
+ 
 ---
 
 
@@ -538,7 +542,7 @@ Use with caution.
 * slack community: [Test & Code Slack](https://testandcode.com/slack) 
 * Twitter: [@brianokken](https://twitter.com/brianokken), [@testandcode](https://twitter.com/testandcode)
 * This code, and markdown for slides, on [github](https://github.com/okken/presentation_parametrization)
-* Presentation will go on slideshare soon
+* Presentation is at [slideshare.net/testandcode](https://www.slideshare.net/testandcode/parametrized-testing-v2)
 ]
 .right-third[
 <a href="https://t.co/AKfVKcdDoy?amp=1">
