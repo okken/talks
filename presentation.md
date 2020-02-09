@@ -309,14 +309,14 @@ Or from a function
 
 `test_6.py:`
 ```python
-def many_triangles():
+*def many_triangles():
     for t in [ (90, 60, 30, "right"),
                (100, 40, 40, "obtuse"),
                (60, 60, 60, "acute"),
                (0, 0, 0, "invalid")]:
 *        yield t
 
-@pytest.mark.parametrize( 'a, b, c, expected', many_triangles())
+*@pytest.mark.parametrize( 'a, b, c, expected', many_triangles())
 def test_func(a, b, c, expected):
     assert triangle_type(a, b, c) == expected
 ```
@@ -327,9 +327,6 @@ Or from a generator.
 # Back to a List
 `test_7.py:`
 ```python
-import pytest
-from triangle import triangle_type
-
 many_triangles = [
     (90, 60, 30, "right"),
     (100, 40, 40, "obtuse"),
@@ -455,10 +452,10 @@ $ pytest test_8.py
 =================== test session starts ===================
 collected 4 items                                         
 
-test_8.py::test_fix[a_triangle0] PASSED             [ 25%]
-test_8.py::test_fix[a_triangle1] PASSED             [ 50%]
-test_8.py::test_fix[a_triangle2] PASSED             [ 75%]
-test_8.py::test_fix[a_triangle3] FAILED             [100%]
+*test_8.py::test_fix[a_triangle0] PASSED             [ 25%]
+*test_8.py::test_fix[a_triangle1] PASSED             [ 50%]
+*test_8.py::test_fix[a_triangle2] PASSED             [ 75%]
+*test_8.py::test_fix[a_triangle3] FAILED             [100%]
 
 =============== 1 failed, 3 passed in 0.03s ===============
 
@@ -485,10 +482,10 @@ $ pytest test_9.py
 =================== test session starts ===================
 collected 4 items                                         
 
-test_9.py::test_fix[right] PASSED                   [ 25%]
-test_9.py::test_fix[obtuse] PASSED                  [ 50%]
-test_9.py::test_fix[acute] PASSED                   [ 75%]
-test_9.py::test_fix[invalid] FAILED                 [100%]
+*test_9.py::test_fix[right] PASSED                   [ 25%]
+*test_9.py::test_fix[obtuse] PASSED                  [ 50%]
+*test_9.py::test_fix[acute] PASSED                   [ 75%]
+*test_9.py::test_fix[invalid] FAILED                 [100%]
 
 =============== 1 failed, 3 passed in 0.03s ===============
 ```
@@ -515,10 +512,10 @@ $ pytest test_10.py
 =================== test session starts ===================
 collected 4 items                                         
 
-test_10.py::test_fix[(90, 60, 30, 'right')] PASSED  [ 25%]
-test_10.py::test_fix[(100, 40, 40, 'obtuse')] PASSED [ 50%]
-test_10.py::test_fix[(60, 60, 60, 'acute')] PASSED  [ 75%]
-test_10.py::test_fix[(0, 0, 0, 'invalid')] FAILED   [100%]
+*test_10.py::test_fix[(90, 60, 30, 'right')] PASSED  [ 25%]
+*test_10.py::test_fix[(100, 40, 40, 'obtuse')] PASSED [ 50%]
+*test_10.py::test_fix[(60, 60, 60, 'acute')] PASSED  [ 75%]
+*test_10.py::test_fix[(0, 0, 0, 'invalid')] FAILED   [100%]
 
 =============== 1 failed, 3 passed in 0.03s ===============
 
@@ -549,10 +546,10 @@ $ pytest test_11.py
 =================== test session starts ===================
 collected 4 items                                         
 
-test_11.py::test_fix[90-60-30-right] PASSED         [ 25%]
-test_11.py::test_fix[100-40-40-obtuse] PASSED       [ 50%]
-test_11.py::test_fix[60-60-60-acute] PASSED         [ 75%]
-test_11.py::test_fix[0-0-0-invalid] FAILED          [100%]
+*test_11.py::test_fix[90-60-30-right] PASSED         [ 25%]
+*test_11.py::test_fix[100-40-40-obtuse] PASSED       [ 50%]
+*test_11.py::test_fix[60-60-60-acute] PASSED         [ 75%]
+*test_11.py::test_fix[0-0-0-invalid] FAILED          [100%]
 
 =============== 1 failed, 3 passed in 0.03s ===============
 ```
@@ -618,15 +615,12 @@ many_triangles = [
     pytest.param(90, 60, 30, "right", marks=smoke),
     pytest.param(100, 40, 40, "obtuse", marks=smoke),
     (90, 60, 30, "right"),
-    pytest.param(0, 0, 0, "invalid", id='zeros-invalid'),
-    pytest.param(90, 90, 90, "invalid", id='all-right-invalid'),
-    pytest.param(-1, 90, 91, "invalid", id='negative-invalid')
+    pytest.param(0, 0, 0, "invalid", id='zeros'),
 ]
 ```
 ```
 *$ pytest -m smoke test_13.py 
 =================== test session starts ===================
-collected 6 items / 4 deselected / 2 selected             
 
 test_13.py::test_func[90-60-30-right] PASSED        [ 50%]
 test_13.py::test_func[100-40-40-obtuse] PASSED      [100%]
@@ -634,15 +628,12 @@ test_13.py::test_func[100-40-40-obtuse] PASSED      [100%]
 ============= 2 passed, 4 deselected in 0.01s =============
 ```
 ```
-*(pres) $ pytest -k invalid test_13.py 
+*$ pytest -k zeros test_13.py 
 =================== test session starts ===================
-collected 6 items / 3 deselected / 3 selected             
 
-test_13.py::test_func[zeros-invalid] PASSED         [ 33%]
-test_13.py::test_func[all-right-invalid] PASSED     [ 66%]
-test_13.py::test_func[negative-invalid] PASSED      [100%]
+test_13.py::test_func[zeros] PASSED                 [100%]
 
-============= 3 passed, 3 deselected in 0.01s =============
+============= 1 passed, 3 deselected in 0.01s =============
 ```
 ???
 * Parametrizations can be modified with pytest.param
@@ -703,11 +694,9 @@ For more on test case selection:
 * [Test & Code 38](https://testandcode.com/38)
     * Prioritize software tests with RCRCRC
 * [Test & Code 39](https://testandcode.com/39)
-    * Thorough software testing for critical features
     * equivalence partitioning
     * boundary value analysis
     * decision tables
-    * Also googling these terms works. Wikipedia has good entries on these.
 ???
 * in this instance, 4 test cases really isn't enough
 * this is a more realistic set of test cases
@@ -719,14 +708,11 @@ For more on test case selection:
 ---
 # Review
 
-Function Parametrization:
 ```python
 pytest.mark.parametrize('a, b, c, expected', many_triangles)
 def test_func(a, b, c, expected):
     assert triangle_type(a, b, c) == expected
 ```
-
-Fixture Parametrization:
 ```python
 @pytest.fixture(params=many_triangles, ids=idfn)
 def a_triangle(request):
@@ -736,8 +722,6 @@ def test_fix(a_triangle):
     a, b, c, expected = a_triangle
     assert triangle_type(a, b, c) == expected
 ```
-
-pytest_generage_tests():
 ```python
 def pytest_generate_tests(metafunc):
     if "gen_triangle" in metafunc.fixturenames:
