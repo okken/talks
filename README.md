@@ -1,2 +1,5 @@
-# presentation_parametrization
-Presentation on pytest parametrization
+# Multiply your Testing Effectiveness with Parametrized Testing
+
+* [code](code/)
+
+* [slides](presentation.html)

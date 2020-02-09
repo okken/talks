@@ -37,17 +37,32 @@
   <textarea id="source">
 class: center, middle
 
-# Multiply your Testing Effectiveness with Parameterized Testing
+# Multiply your Testing Effectiveness with Parametrized Testing
 
 Brian Okken
 
 [@brianokken](https://twitter.com/brianokken)
 
-Code and markdown for slides 
+Code and slides 
 
 [github.com/okken/pycascades2020](https://github.com/okken/pycascades2020)
 
- 
+---
+
+class: center, middle
+
+# `parametrize` 
+# one of the superpowers of pytest
+
+???
+I'm so glad you are here.  
+Thank you   
+I really do think that Parametrized Testing will save you  
+both development time and maintenance time. 
+
+I definitely came to pytest for the fixtures.   
+But I soon after fell in love with parametrize.
+
 ---
 
 
@@ -61,35 +76,31 @@ Work
 Podcasts
 
 <a href="https://pythonbytes.fm">
-<img src="images/pb.png" width="180"></a>
+<img src="images/pb.png" width="190"></a>
 <a href="https://testandcode.com">
-<img src="images/testandcode.jpg" width="130"></a>
+<img src="images/testandcode.jpg" width="140"></a>
 ]
 .right-column[
 Book
  
 <a href="https://t.co/AKfVKcdDoy?amp=1">
-<img src="images/book.jpg" style="border-style: solid;" width="200">
+<img src="images/book.jpg" style="border-style: solid;" width="300">
 </a>
 ]
+???
+I am 
+* an embedded C++ developer
+* and a team lead 
+* we make wireless communication test equipment
 
----
+I'm also 
+* the host of the Test & Code podcast.
+* the co-host of Python Bytes
+* bringing Python news and headlines directly to your earbuds
 
-# Takeaways
+* And I wrote a book. 
+* Talk to me if you don't have a rocket sticker yet.
 
-* Why parametrization is useful
-
-* Your choices 
-    * function
-    * fixture
-    * hook function, `pytest_generate_tests`
-    
-* How to 
-    * choose a technique
-    * run subsets of test cases
-    * use `pytest.param` for ids and markers
-    * use `indirect` to intercept parameters with fixtures
-    
 ---
 
 # Value of Tests
@@ -107,15 +118,51 @@ Only works if:
 * New features are tested with new tests.
 * **Tests are easy and fast to write.**  <- *this is what we're focusing on*
 ???
-I hope that if you are here at this talk, you already know 
-the value of software testing.
-And more importantly, the value of a test suite that's so robust
-that you trust your changes and have fun writing code 
-and taking risks, knowing the safety net of tests will 
-help give you freedom.
 
-The part we're focusing on today is how to have a complete
-set of test cases that's easy to write and maintain.
+* This is not just a "for your manager" slide. 
+* You should know that a good robust test suite helps you
+    * be proud of your code
+    * have more fun
+    * have less fear
+
+* Bonus if the test cases are 
+    * quick to write
+    * easy to maintain
+
+That's the part we are focusing on today
+
+---
+
+# Takeaways
+
+* Why parametrization is useful
+
+* Your choices 
+    * function
+    * fixture
+    * `pytest_generate_tests`
+    
+* How to 
+    * choose a technique
+    * run subsets of test cases
+    * use `pytest.param` for ids and markers
+    * use `indirect` to intercept parameters with fixtures
+    
+???
+* We're going to see the code for 3 ways to parametrize
+    * function
+    * fixture
+    * generate tests
+* Function parametrization is something I use all the time
+* Fixture parametrization, I use less often
+* I very seldom use pytest_generate_tests, but when I do, I'm super grateful for it.
+* The ability to run a subset of parametrizations is way cool.
+* The last two bits I'm going to talk about,
+    * pytest.param
+    * indirect
+* Are things you may need someday, 
+    * and will run across in documentation
+    * so I'm covering them so they seem less mysterious
 
 ---
 
@@ -132,26 +179,14 @@ I've tried to get them to change it.
 They don't want to.  
 I've gotten over it. 
 
----
-# some bookkeeping
-
-This is in place for the examples.
-
-`pytest.ini`:
-```
-[pytest]
-markers = smoke : smoke tests
-addopts = --tb=no -v
-```
-
 ???
-* The `pytest.ini` file is in use for my examples.
-* If you don't know what this is, it's not important for this
-  talk, but it affects the output, so I thought I'd mention it
-* We don't really care about the traceback right now, so
-  I've turned it off.
-* I also want to show the test names, thus verbose.
-* And we'll use this marker later on in the talk.
+* There is no e between t and r
+* Apparently both spellings are allowed in English
+* Only one is allowed in pytest
+* I submitted a ticket to allow both
+* Core devs rejected it.
+* I've gotten over it. 
+
 ---
 
 # Something to Test
@@ -177,10 +212,16 @@ Right ![](images/right_triangle.png),
 Acute ![](images/acute_triangle.png),
 Obtuse ![](images/obtuse_triangle.png),
 ???
-* Here's a function `triangle_type` that takes 3 angles and returns 4 possible values.
-* If you know the difference between obtuse and acute triangles, you rock.
+* Some code to test
+* Given 3 angles
+    * Return a triangle type
+        * Right if there's a 90 degree angle
+        * One larger than 90? Obtuse
+        * All less than 90? Acute
+* If you already know that, you rock
 * I had to look it up.
-* This has at least one bug in it.
+
+* Also, there is at least one bug in it.
 
 ---
 
@@ -215,18 +256,33 @@ test_1.py::test_invalid FAILED                      [100%]
 =============== 1 failed, 3 passed in 0.03s ===============
 ```
 ???
-* Since there are 4 possible outcomes, 
-we need at least 4 test cases.
-* we need more test cases and it's already kinda ugly
+* 4 outcomes, at least 4 test cases needed
+* really, we need more
     * boundary values
-    * negative numbers
     * floats
+    * more invalid cases
+    * but disregarding those for now
+* without parametrization, we might write something like this
+* these tests are simple. 1 line
+* many tests will be more complicated 
+    * in those cases
+    * redundancy will be more painful
 
-Problems:
-* redundancy
-* if tests more complicated, even more pain
-* new test cases often involves cut/paste/modify, 
-  which can produce errors.
+---
+# pytest.ini
+
+I wanted all the examples to include `--tb=no`, and `-v` for:
+* hide tracebacks
+* verbose: show the test names
+
+So those are in a `pytest.ini` file:
+```
+[pytest]
+addopts = --tb=no -v
+markers =
+    smoke : smoke tests
+```
+
 ---
 # Moving to one test (don't do this)
 `test_2.py`:
@@ -252,13 +308,15 @@ test_2.py::test_type FAILED                         [100%]
 ==================== 1 failed in 0.03s ====================
 ```
 ???
-Nice
+If I wanted to replace my 4 test cases with one test I could do this
 * it's easier to extend now
 * when everything passes, it seems fine
 
 However
-* there's really 4 test cases, pytest shows 1
+* there's really 4 test cases
+* but pytest shows 1
 * any failure fails everything
+* what test case failed is a mystery without seeing the traceback
 
 ---
 # Function Parametrization
@@ -273,9 +331,9 @@ However
     assert triangle_type(a, b, c) == expected
 ```
 ???
-* This is the basic syntax
+* This is the basic syntax for function parametrization
 * the same 4 cases, one function
-* the list of parameter rows can be in-line, 
+* the list of parameter rows can be in-line, like this or 
 ---
 # Function Parametrization
 `test_3.py`:
@@ -364,9 +422,6 @@ Or from a generator.
 # Back to a List
 `test_7.py:`
 ```python
-import pytest
-from triangle import triangle_type
-
 many_triangles = [
     (90, 60, 30, "right"),
     (100, 40, 40, "obtuse"),
@@ -712,7 +767,7 @@ it to the test, an "indirect" route.
 # More test cass
 
 ```python
-triangles = [
+many_triangles = [
     (  1, 1, 178, "obtuse"), # big angles
     ( 91, 44, 45, "obtuse"), # just over 90
     (0.01, 0.01, 179.98, "obtuse"), # decimals 
@@ -749,7 +804,7 @@ For more on test case selection:
 # Review
 
 ```python
-pytest.mark.parametrize('a, b, c, expected', many_triangles)
+@pytest.mark.parametrize('a, b, c, expected', many_triangles)
 def test_func(a, b, c, expected):
     assert triangle_type(a, b, c) == expected
 ```
