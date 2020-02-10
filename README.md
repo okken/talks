@@ -2,4 +2,4 @@
 
 * [code](code/)
 
-* [slides](presentation.html)
+* [slides](ParametrizedTesting.pdf)
