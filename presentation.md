@@ -10,24 +10,22 @@ Code and slides
 
 [github.com/okken/pycascades2020](https://github.com/okken/pycascades2020)
 
----
+--
 
-class: center, middle
-
-# `parametrize` 
-# one of the superpowers of pytest
-
+pytest & rocket stickers   
+come see me after the talk
 ???
 I'm so glad you are here.  
-Thank you   
-I really do think that Parametrized Testing will save you  
-both development time and maintenance time. 
+Thank you.
 
-I definitely came to pytest for the fixtures.   
-But I soon after fell in love with parametrize.
+parametrized testing is one of the superpowers of pytest
+
+* save you time
+* both development time 
+* and maintenance time. 
+
 
 ---
-
 
 # Brian Okken
 
@@ -38,10 +36,10 @@ Work
 
 Podcasts
 
-<a href="https://pythonbytes.fm">
-<img src="images/pb.png" width="190"></a>
 <a href="https://testandcode.com">
 <img src="images/testandcode.jpg" width="140"></a>
+<a href="https://pythonbytes.fm">
+<img src="images/pb.png" width="190"></a>
 ]
 .right-column[
 Book
@@ -51,7 +49,7 @@ Book
 </a>
 ]
 ???
-I am 
+I am Brian Okken. The O is soft. 
 * an embedded C++ developer
 * and a team lead 
 * we make wireless communication test equipment
@@ -59,10 +57,9 @@ I am
 I'm also 
 * the host of the Test & Code podcast.
 * the co-host of Python Bytes
-* bringing Python news and headlines directly to your earbuds
-
-* And I wrote a book. 
-* Talk to me if you don't have a rocket sticker yet.
+    * bringing Python news and headlines directly to your earbuds
+* And I wrote a book
+    * with input from a lot of really smart people
 
 ---
 
@@ -88,7 +85,7 @@ Only works if:
     * have more fun
     * have less fear
 
-* Bonus if the test cases are 
+* It's a bonus if the test cases are 
     * quick to write
     * easy to maintain
 
@@ -113,19 +110,17 @@ That's the part we are focusing on today
     
 ???
 * We're going to see the code for 3 ways to parametrize
-    * function
-    * fixture
-    * generate tests
-* Function parametrization is something I use all the time
-* Fixture parametrization, I use less often
-* I very seldom use pytest_generate_tests, but when I do, I'm super grateful for it.
-* The ability to run a subset of parametrizations is way cool.
-* The last two bits I'm going to talk about,
+    * function - use all the time
+    * fixture  - once in a while
+    * generate tests - very seldom
+    
+* Running subset of parametrizations
+* The last two things may seem out of context
     * pytest.param
     * indirect
-* Are things you may need someday, 
-    * and will run across in documentation
-    * so I'm covering them so they seem less mysterious
+* You probably won't need them right away.
+* But I want you to know about them so they don't 
+    * seem mysterious when you do see them
 
 ---
 
@@ -143,12 +138,15 @@ They don't want to.
 I've gotten over it. 
 
 ???
+* parametrize
+
 * There is no e between t and r
 * Apparently both spellings are allowed in English
+
 * Only one is allowed in pytest
-* I submitted a ticket to allow both
-* Core devs rejected it.
-* I've gotten over it. 
+    * I submitted a ticket to allow both
+    * Core devs rejected it.
+    * I've gotten over it. 
 
 ---
 
@@ -179,18 +177,16 @@ Obtuse ![](images/obtuse_triangle.png),
 * Given 3 angles
     * Return a triangle type
         * Right if there's a 90 degree angle
-        * One larger than 90? Obtuse
-        * All less than 90? Acute
+        * Obtuse if one > 90
+        * Acute if all < 90
 * If you already know that, you rock
 * I had to look it up.
 
-* Also, there is at least one bug in it.
+* Also, there is at least one bug in the code
 
 ---
 
 # without Parametrization
-
-`test_1.py`:
 
 ```python
 def test_right():
@@ -205,11 +201,9 @@ def test_acute():
 def test_invalid():
     assert triangle_type(0, 0, 0) == "invalid"
 ```
-
 ```
 $ pytest test_1.py
 =================== test session starts ===================
-collected 4 items                                         
 
 test_1.py::test_right PASSED                        [ 25%]
 test_1.py::test_obtuse PASSED                       [ 50%]
@@ -219,13 +213,13 @@ test_1.py::test_invalid FAILED                      [100%]
 =============== 1 failed, 3 passed in 0.03s ===============
 ```
 ???
+* without parametrization, we might write something like this
 * 4 outcomes, at least 4 test cases needed
 * really, we need more
     * boundary values
     * floats
     * more invalid cases
     * but disregarding those for now
-* without parametrization, we might write something like this
 * these tests are simple. 1 line
 * many tests will be more complicated 
     * in those cases
@@ -245,10 +239,17 @@ addopts = --tb=no -v
 markers =
     smoke : smoke tests
 ```
+???
+I wanted all the examples to include `--tb=no`, and `-v` for:
+* hide tracebacks
+* verbose: show the test names
+
+So those are in a `pytest.ini` file
+
+If this means nothing to you, don't worry about it
 
 ---
 # Moving to one test (don't do this)
-`test_2.py`:
 ```python
 def test_type():
     many_triangles = [
@@ -264,14 +265,13 @@ def test_type():
 ```shell
 $ pytest test_2.py
 =================== test session starts ===================
-collected 1 item                                          
 
 test_2.py::test_type FAILED                         [100%]
 
 ==================== 1 failed in 0.03s ====================
 ```
 ???
-If I wanted to replace my 4 test cases with one test I could do this
+If I wanted to replace my 4 tests  with 1 I could do this
 * it's easier to extend now
 * when everything passes, it seems fine
 
@@ -283,7 +283,6 @@ However
 
 ---
 # Function Parametrization
-`test_3.py`:
 ```python
 *@pytest.mark.parametrize( 'a, b, c, expected', [
     (90, 60, 30, "right"),
@@ -296,10 +295,10 @@ However
 ???
 * This is the basic syntax for function parametrization
 * the same 4 cases, one function
-* the list of parameter rows can be in-line, like this or 
+* the parameters can be in the decorator call, like this, but I'll
+  switch to something more readable soon.
 ---
 # Function Parametrization
-`test_3.py`:
 ```python
 @pytest.mark.parametrize( 'a, b, c, expected', [
     (90, 60, 30, "right"),
@@ -312,7 +311,6 @@ def test_func(a, b, c, expected):
 ```shell 
 $ pytest test_3.py
 =================== test session starts ===================
-collected 4 items                                         
 
 test_3.py::test_func[90-60-30-right] PASSED         [ 25%]
 test_3.py::test_func[100-40-40-obtuse] PASSED       [ 50%]
@@ -322,12 +320,14 @@ test_3.py::test_func[0-0-0-invalid] FAILED          [100%]
 =============== 1 failed, 3 passed in 0.03s ===============
 ```
 ???
-* When we run it we see all the test cases
-* but I usually don't do this
+* When we run it we see all the test cases now.
+* so cool
+* the long name, from test_ through the brackts, 
+    * is called a node id
+* I also call this a test case
 ---
 # Function Parametrization
 
-`test_4.py:`
 ```python
 *many_triangles = [
     (90, 60, 30, "right"),
@@ -342,12 +342,12 @@ def test_func(a, b, c, expected):
 ```
 Test cases moved to a variable
 ???
-I find it easier to read if I name the list.
+I find it easier to read if I name the list and move
+the list definition out of the decorator call.
 
 ---
 # Function Parametrization 
 
-`test_5.py:`
 ```python
 *def many_triangles():
     return [ (90, 60, 30, "right"),
@@ -361,11 +361,12 @@ def test_func(a, b, c, expected):
 ```
 Test cases from a function
 ???
-Or from a function
+* Or from a function  
+* Note that with this you can generate the test cases 
+    * dynamically at test collection time
 ---
 # Function Parametrization
 
-`test_6.py:`
 ```python
 *def many_triangles():
     for t in [ (90, 60, 30, "right"),
@@ -383,7 +384,6 @@ Test cases from a generator
 Or from a generator.
 ---
 # Back to a List
-`test_7.py:`
 ```python
 many_triangles = [
     (90, 60, 30, "right"),
@@ -400,7 +400,6 @@ def test_func(a, b, c, expected):
 ```
 $ pytest test_7.py 
 =================== test session starts ===================
-collected 4 items                                         
 
 test_7.py::test_func[90-60-30-right] PASSED         [ 25%]
 test_7.py::test_func[100-40-40-obtuse] PASSED       [ 50%]
@@ -411,11 +410,9 @@ test_7.py::test_func[0-0-0-invalid] FAILED          [100%]
 
 ```
 ???
-But let's go back to the list for now.
-I also changed the name to test_func because the other two ways
-However, since function parametrization should be your goto method
-for lots and lots of tests, let's look at some tricks with running
-parametrized tests.
+* But let's go back to the list for now.
+* Let's look at some tricks with running parametrized tests.
+* We have a failure here.
 ---
 # Run the last failing test case
 ```
@@ -436,13 +433,13 @@ E     + invalid
 ============= 1 failed, 3 deselected in 0.03s =============
 ```
 ???
-
+* We can use --lf to show the last failure
+* and --tb=short to see a short version of the traceback
 ---
 # Run test cases with 60 degree angles 
 ```
 *$ pytest -k 60 test_7.py 
 =================== test session starts ===================
-collected 4 items / 2 deselected / 2 selected             
 
 test_7.py::test_func[90-60-30-right] PASSED         [ 50%]
 test_7.py::test_func[60-60-60-acute] PASSED         [100%]
@@ -450,20 +447,19 @@ test_7.py::test_func[60-60-60-acute] PASSED         [100%]
 ============= 2 passed, 2 deselected in 0.01s =============
 ```
 ???
-
+Or we can run all test cases with 60 in the node id
 ---
 # Run an individual test case 
 ```
 *$ pytest test_7.py::test_func[0-0-0-invalid]
 =================== test session starts ===================
-collected 1 item                                          
 
 test_7.py::test_func[0-0-0-invalid] FAILED          [100%]
 
 ==================== 1 failed in 0.03s ====================
 ```
 ???
-
+Or run a specific test case
 ---
 # Fixture Parametrization
 
@@ -487,15 +483,19 @@ Fixture `test_8.py:`
 ```
 
 ???
-* Basic syntax
-* I like to do fixture parametrization returning a row of related
-values
-* but you can parametrize a single param fixture as well, and then
-  you wouldn't have to unpack it
+* The next technique for parametrization is fixture parametrization
+* The basic syntax is easy enough
+* The parameters are passed to the fixture decorator
+* request.param will be filled with each tuple from many_triangles 
 ---
 # Fixture Parametrization
-`test_8.py:`
 ```python
+many_triangles = [
+*    (90, 60, 30, "right"),
+*    (100, 40, 40, "obtuse"),
+*    (60, 60, 60, "acute"),
+*    (0, 0, 0, "invalid")]
+
 @pytest.fixture(params=many_triangles)
 def a_triangle(request):
     return request.param
@@ -504,12 +504,9 @@ def test_fix(a_triangle):
     a, b, c, expected = a_triangle
     assert triangle_type(a, b, c) == expected
 ```
-
 ```
 $ pytest test_8.py 
 =================== test session starts ===================
-collected 4 items                                         
-
 *test_8.py::test_fix[a_triangle0] PASSED             [ 25%]
 *test_8.py::test_fix[a_triangle1] PASSED             [ 50%]
 *test_8.py::test_fix[a_triangle2] PASSED             [ 75%]
@@ -519,12 +516,21 @@ collected 4 items
 
 ```
 ???
-* problem is the identifier, yuk, let's fix it before moving on
+* We have an issue here with the node names
+* If we parametrize with objects, like tuples here, 
+    * pytest doesn't try to come up with a good name 
+    * it just names the parameters with a counter
+* there's a few ways to fix it.
 
 ---
 # Fixture Parametrization 
-`test_9.py:`
 ```python
+many_triangles = [
+*    (90, 60, 30, "right"),
+*    (100, 40, 40, "obtuse"),
+*    (60, 60, 60, "acute"),
+*    (0, 0, 0, "invalid") ]
+
 @pytest.fixture(params=many_triangles,
 *                ids=['right', 'obtuse', 'acute', 'invalid'])
 def a_triangle(request):
@@ -538,13 +544,10 @@ def test_fix(a_triangle):
 ```
 $ pytest test_9.py 
 =================== test session starts ===================
-collected 4 items                                         
-
 *test_9.py::test_fix[right] PASSED                   [ 25%]
 *test_9.py::test_fix[obtuse] PASSED                  [ 50%]
 *test_9.py::test_fix[acute] PASSED                   [ 75%]
 *test_9.py::test_fix[invalid] FAILED                 [100%]
-
 =============== 1 failed, 3 passed in 0.03s ===============
 ```
 ???
@@ -552,39 +555,40 @@ ids allows us to pass in either a list of identifiers
 
 ---
 # Fixture Parametrization
-`test_10.py:`
 ```python
-*@pytest.fixture(params=many_triangles, ids=str)
+many_triangles = [
+     (90, 60, 30, "right"),
+     (100, 40, 40, "obtuse"),
+     (60, 60, 60, "acute"),
+     (0, 0, 0, "invalid") ]
+
+@pytest.fixture(params=many_triangles, 
+*                ids=str)  # or repr
 def a_triangle(request):
     return request.param
-
 
 def test_fix(a_triangle):
     a, b, c, expected = a_triangle
     assert triangle_type(a, b, c) == expected
 
 ```
-
 ```
 $ pytest test_10.py 
 =================== test session starts ===================
-collected 4 items                                         
-
 *test_10.py::test_fix[(90, 60, 30, 'right')] PASSED  [ 25%]
 *test_10.py::test_fix[(100, 40, 40, 'obtuse')] PASSED [ 50%]
 *test_10.py::test_fix[(60, 60, 60, 'acute')] PASSED  [ 75%]
 *test_10.py::test_fix[(0, 0, 0, 'invalid')] FAILED   [100%]
-
 =============== 1 failed, 3 passed in 0.03s ===============
 
 ```
 ???
-or a function that can take one of the parametrizations and return a string
-often, str or repr are fine to pass in
+* or a function that can take one of the parametrizations 
+* and return a string
+* often, str or repr are fine to pass in
 
 ---
 # Fixture Parametrization 
-`test_11.py:`
 ```python
 *def idfn(a_triangle):
 *    a, b, c, expected = a_triangle
@@ -602,26 +606,23 @@ def test_fix(a_triangle):
 ```
 $ pytest test_11.py 
 =================== test session starts ===================
-collected 4 items                                         
-
 *test_11.py::test_fix[90-60-30-right] PASSED         [ 25%]
 *test_11.py::test_fix[100-40-40-obtuse] PASSED       [ 50%]
 *test_11.py::test_fix[60-60-60-acute] PASSED         [ 75%]
 *test_11.py::test_fix[0-0-0-invalid] FAILED          [100%]
-
 =============== 1 failed, 3 passed in 0.03s ===============
 ```
 ???
-* But I often like to just write an id function.
 * You can also use a lambda function
+* But I often like to just write an id function.
 
-Fixture parametriziton is great 
+* when would you use Fixture over Function
 * if doing work to set up each fixture value
-* if running multiple test against the same set of "setup states"
+* if you are already using a fixture for some of the work and thats
+    * the bit that needs to be rerun for multiple setup states
 
 ---
 # pytest_generate_tests()
-`test_12.py:`
 ```python
 *def pytest_generate_tests(metafunc):
 *    if "gen_triangle" in metafunc.fixturenames:
@@ -637,7 +638,6 @@ def test_gen(gen_triangle):
 ```
 $ pytest test_12.py 
 =================== test session starts ===================
-collected 4 items                                         
 
 test_12.py::test_gen[90-60-30-right] PASSED         [ 25%]
 test_12.py::test_gen[100-40-40-obtuse] PASSED       [ 50%]
@@ -647,25 +647,57 @@ test_12.py::test_gen[0-0-0-invalid] FAILED          [100%]
 =============== 1 failed, 3 passed in 0.03s ===============
 ```
 ???
-The third technique is using the hook function pytest_generate_tests
-I reserve this for use cases that I can't figure out with function or fixture
-parametrization. But honestly, I usually end up refactoring back to a more 
-standard parametrization method.
+* third technique -> the hook function pytest_generate_tests
+
 Benefits:
-- generate parametrizations based on more info, metafunc has a lot of introspection
-- you can dynamically generate params based on lots of introspection options
+- generate parametrizations based on more info, 
+    * metafunc has a lot of introspection
 
 ---
 # metafunc
 
 From [docs.pytest.org/en/latest/reference.html#metafunc](https://docs.pytest.org/en/latest/reference.html#metafunc)
 
-> Metafunc objects are passed to the pytest_generate_tests hook. They help to inspect a test function and to generate tests according to test configuration or values specified in the class or module where a test function is defined.
+* Metafunc objects are passed to the pytest_generate_tests hook.  
+* They help to inspect a test function and to generate tests according to 
+    * test configuration 
+    * or values specified in the class or module where a test function is defined.
+???
+For instance, 
+* you could generate the parameter list based on command like flags 
+* or other configuration.
+* or based on the presence of other fixtures besides the one you are parmetrizing
+
+---
+# test.param
+`test_12.py:`
+```python
+many_triangles = [
+     (90, 60, 30, "right"),
+     (100, 40, 40, "obtuse"),
+     (60, 60, 60, "acute"),
+     (0, 0, 0, "invalid") 
+]
+```
+`test_13.py:`
+```python
+*smoke = pytest.mark.smoke
+
+many_triangles = [
+*    pytest.param(90, 60, 30, "right", marks=smoke),
+*    pytest.param(100, 40, 40, "obtuse", marks=smoke),
+    (90, 60, 30, "right"),
+*    pytest.param(0, 0, 0, "invalid", id='zeros'),
+]
+```
+???
+* Parametrizations can be modified with pytest.param
+* You can add markers to individual test cases
+* You can change the identifier
 
 ---
 # test.param
 
-`test_13.py:`
 ```python
 smoke = pytest.mark.smoke
 
@@ -679,24 +711,16 @@ many_triangles = [
 ```
 *$ pytest -m smoke test_13.py 
 =================== test session starts ===================
-
 test_13.py::test_func[90-60-30-right] PASSED        [ 50%]
 test_13.py::test_func[100-40-40-obtuse] PASSED      [100%]
-
 ============= 2 passed, 4 deselected in 0.01s =============
 ```
 ```
 *$ pytest -k zeros test_13.py 
 =================== test session starts ===================
-
 test_13.py::test_func[zeros] PASSED                 [100%]
-
 ============= 1 passed, 3 deselected in 0.01s =============
 ```
-???
-* Parametrizations can be modified with pytest.param
-* You can add markers to individual test cases
-* You can change the identifier
 ---
 # indirect parameter
 `test_14.py:`
@@ -749,12 +773,8 @@ many_triangles = [
 ``` 
 
 For more on test case selection:
-* [Test & Code 38](https://testandcode.com/38)
-    * Prioritize software tests with RCRCRC
-* [Test & Code 39](https://testandcode.com/39)
-    * equivalence partitioning
-    * boundary value analysis
-    * decision tables
+* [Test & Code 38](https://testandcode.com/38) : Prioritize software tests with RCRCRC
+* [Test & Code 39](https://testandcode.com/39) : equivalence partitioning, boundary value analysis, decision tables
 ???
 * in this instance, 4 test cases really isn't enough
 * this is a more realistic set of test cases
