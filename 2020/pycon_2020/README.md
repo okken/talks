@@ -18,3 +18,23 @@ and using generators.
 * [code](code/)
 * [slides](ParametrizedTesting.pdf)
 * video : when available
+
+## Resources 
+
+The resources listed at the end of the talk.
+
+* [Python Testing with pytest](https://t.co/AKfVKcdDoy?amp=1) 
+    * The fastest way to get super productive with pytest
+* pytest docs on 
+    * [parametrization, in general](https://docs.pytest.org/en/latest/parametrize.html) 
+    * [function parametrization](https://docs.pytest.org/en/latest/parametrize.html#pytest-mark-parametrize)
+    * [fixture parametrization](https://docs.pytest.org/en/latest/fixture.html#fixture-parametrize)
+    * [pytest_generate_tests](https://docs.pytest.org/en/latest/parametrize.html#basic-pytest-generate-tests-example)
+    * [indirect](http://doc.pytest.org/en/latest/example/parametrize.html#apply-indirect-on-particular-arguments)
+* podcasts
+    * [Test & Code](https://testandcode.com) 
+    * [Python Bytes](https://pythonbytes.fm)
+    * [Talk Python](https://talkpython.fm)
+* slack community: [Test & Code Slack](https://testandcode.com/slack) 
+* Twitter: [@brianokken](https://twitter.com/brianokken), 
+* Training: [testandcode.com/training](https://testandcode.com/training)
