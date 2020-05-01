@@ -1,6 +1,6 @@
 # Multiply your Testing Effectiveness with Parametrized Testing
 
-*Was scheduled for 5:10 pm, Friday, April 17.*
+*Was scheduled for 5:10 pm, Friday, April 17.*  
 *Will hopefully be online soon-ish.*
   
 **Summary:** Parametrization is one of the superpowers of pytest. 
@@ -15,6 +15,6 @@ and using generators.
 
 * [PyCon 2020](https://us.pycon.org/2020/)
 * [Talk blurb from PyCon 2020](https://us.pycon.org/2020/schedule/presentation/172/)
-* code : when available
-* slides : when available
+* [code](code/)
+* [slides](ParametrizedTesting.pdf)
 * video : when available
