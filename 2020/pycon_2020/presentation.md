@@ -940,7 +940,7 @@ just be aware of that.
 
 ---
 
-# Resources
+ Resources
 
 .left-two-thirds[
 * [Python Testing with pytest](https://t.co/AKfVKcdDoy?amp=1) 
