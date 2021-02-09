@@ -8,7 +8,7 @@ Brian Okken
 
 Code and slides 
 
-[github.com/okken/talks](https://github.com/okken/talks/tree/master/2021/fixtures)
+[github.com/okken/talks](https://github.com/okken/talks/tree/master/2021/fixtures)  
 
 ---
 layout: true
