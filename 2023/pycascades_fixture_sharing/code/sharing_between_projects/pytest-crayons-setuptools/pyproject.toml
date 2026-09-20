@@ -1,0 +1,23 @@
+[project]
+name = "pytest-crayons"
+description = "A pytest plugin for colorful print statements"
+version = "0.0.3"
+authors = [{name = "Brian Okken"}]
+requires-python = ">3.7"
+readme = "README.md"
+license = { file = "LICENSE"}
+dependencies = ["pytest"]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Framework :: Pytest"
+    ]
+
+[project.urls]
+Home = "https://github.com/okken/pytest-crayons"
+
+[project.entry-points.pytest11]
+pytest_crayons = "pytest_crayons"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"

@@ -1,0 +1,81 @@
+# Sharing pytest fixtures
+
+## Description
+
+When people start using pytest as a team, they often come up with cool fixtures that would be great to share across projects. Many great Python packages, including Faker, come pre-loaded with pytest fixtures. This talk describes how easy it is to share fixtures using the pytest plugin model. The talk follows the journey of a pytest fixture from local fixture to pip installable pytest plugin using modern Python packaging.  
+
+## Outline
+
+* Fixture crash course (5 min)
+    * What are fixtures
+    * Walking through a couple examples 
+    * Using them in test code
+* Sharing fixtures within a project (5 min)
+    * Sharing with conftest.py files
+* Sharing between projects (building a plugin) (15 min)
+    * Moving fixtures into their own Python project
+    * Packaging with flit
+    * What needs to be in pyproject.toml
+    * Specifying pytest entry points
+    * Alternative settings for hatch & setuptools
+* Sharing through github repo (1 min)
+* Testing plugins with tox (3 min)
+* Sharing through PyPI (1 min)
+
+## Previously given this talk
+
+Yes. I gave a version of this talk at PyBay 2022, titled "Sharing is Caring - pytest fixture edition"
+It's listed on the https://pybay.com/program/ page.
+The slides and code samples are here: https://github.com/okken/pytest_fixture_sharing 
+Although, I'll probably make some changes and additions for the PyCon talk.
+
+
+## Previous talks
+
+* PyCascades 2020: https://2020.pycascades.com/talks/multiplying-your-testing-effectiveness-with-parameterized-testing/
+* PyCascades 2021: https://2021.pycascades.com/program/talks/all-about-podcasting-by-the-hosts-of-talk-python-to-me-test-code/ 
+
+Past Experience:
+
+I've spoken at:
+* PyBay
+  * 2022 - Sharing is Caring - pytest fixture edition
+* PyCon
+  * 2018 - Visual Testing with PyCharm and pytest
+  * 2020 - pytest parametrization, https://us.pycon.org/2020/schedule/presentation/172/
+* PyCascades 
+   * 2020 - pytest parametrization, https://2020.pycascades.com/talks/multiplying-your-testing-effectiveness-with-parameterized-testing/
+   * 2021 - Q&A panel discussion on podcasting
+* PNSQC 2016 - How Testing Strategy can Increase Developer Efficiency and Effectiveness
+* Various Python meetups, presented to  teams at various companies and organizations.
+
+Experience with the subject:
+* I've written a book (twice) on the on pytest, currently "Python Testing with pytest, 2nd edition".
+* Podcasted about it at testandcode.com
+* I use it every day, and have for the last 10 years.
+
+
+## second proposal 
+## Speeding up your code - Benchmarking with tests
+
+## Description
+
+Let's say you have some code you want to be faster. How do you do that? Not specifically the techniques to make it faster, but how do you find the parts that are slow? Then if you fix those, how do you make sure your fixes are faster enough to justify the changes? 
+This talk uses a small example to walk through using profilers to find the problem, benchmark tools to measure the problem, and using tests to benchmark incremental code changes to make the code faster. 
+
+
+## outline
+
+* The problem code in question (3 min)
+    * Describe the code, the behavior, and the target use model
+* Why it's too slow (2 min)
+    * Surprise! It's being used in unexpected ways with huge data sets.
+    * Description of problem use case.
+* Using profilers (10 min)
+    * Profiling toy example to measure where the time is being spent.
+* Benhmarking tools (5)
+    * Setting up a baseline benchmark 
+* Making incremental changes (5 min)
+    * Testing the speed improvements with test functions
+* Wrap-up and review (5 min)
+

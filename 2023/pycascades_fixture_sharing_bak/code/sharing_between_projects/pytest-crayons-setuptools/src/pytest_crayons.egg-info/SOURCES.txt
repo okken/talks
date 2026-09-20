@@ -1,0 +1,11 @@
+LICENSE
+README.md
+pyproject.toml
+src/pytest_crayons/__init__.py
+src/pytest_crayons/plugin.py
+src/pytest_crayons.egg-info/PKG-INFO
+src/pytest_crayons.egg-info/SOURCES.txt
+src/pytest_crayons.egg-info/dependency_links.txt
+src/pytest_crayons.egg-info/entry_points.txt
+src/pytest_crayons.egg-info/requires.txt
+src/pytest_crayons.egg-info/top_level.txt

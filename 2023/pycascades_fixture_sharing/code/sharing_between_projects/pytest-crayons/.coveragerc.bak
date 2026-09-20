@@ -1,0 +1,8 @@
+[run]
+branch = True
+
+[paths]
+source =
+   src/pytest_crayons
+   .tox/coverage/lib/python3.11/site-packages/pytest_crayons
+

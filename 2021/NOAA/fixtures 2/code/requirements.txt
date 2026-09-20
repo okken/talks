@@ -1,0 +1,3 @@
+pytest==6.2.2
+pytest-pythonpath==0.7.3
+tinydb==4.3.0
