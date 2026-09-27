@@ -1,5 +1,7 @@
+
+
 build-lists: true
-footer: Brian Okken | pythontest.com/tdd-pybay-2025 
+footer: Brian Okken | pythontest.com/tdd-pybay-2026 
 
 # Is TDD Still Relevant?
 ## Yes, but don't be dumb about it.
@@ -16,157 +18,167 @@ footer: Brian Okken | pythontest.com/tdd-pybay-2025
 # Slides
 
 [.text: alignment(center)]
-## pythontest.com/tdd-pybay-2025 
+
+## pythontest.com/tdd-pybay-2026 
 [.hide-footer]
 
 ---
 
-# Brian Okken 
+# Brian Okken - Podcasts
 [.build-lists: false]
 
 [.column]
-* Podcasts
-  Python Bytes / Test & Code
+
+* Test and Code (2015 - 2025)
+* Python Bytes (2016 - 2026)
+* Python People (2023 - 2024)
+
 
 [.column]
 ![inline:45%](pythonbytes.png) 
-![inline:60%](testandcode.png) 
+![inline:45%](pythonbytes.png) 
 
 ---
 
-# Brian Okken 
+# Python People will Return
+![fit](pythonbytes.png) 
+
+[.text: alignment(center)]
+[.hide-footer]
+[pythonpeople.pythontest.com](https://pythonpeople.pythontest.com)
+
+### Previous Guests
+
+[.column]
+
+Michael Kennedy
+Paul Everitt
+Brett Cannon
+Barry Warsaw
+Bob Belderbos
+
+[.column]
+Naomi Ceder
+Mariatta Wijaya
+Carlton Gibson
+Will Vincent
+Julian Sequeira
+
+[.column]
+Pamela Fox
+Nikita Karamov
+Rob Ludwick
+Shauna Gordon-McKeon
+
+---
+
+# Brian Okken - Books
 [.build-lists: false]
 
 [.column]
-* Podcasts
-  Python Bytes / Test & Code
-* Books
-  Python Testing with pytest
+* Python Testing with pytest
+* Lean TDD
 
 [.column]
-![inline:35%](pythonbytes.png) ![inline:40%](testandcode.png) 
 ![inline:40%](book1.jpg) ![inline:40%](book.jpeg)
+![inline:40%](leantdd.jpeg)
 
 ---
 
-# Brian Okken 
+# Brian Okken - Courses
 [.build-lists: false]
 
 [.column]
-* Podcasts
-  Python Bytes / Test & Code
-* Books
-  Python Testing with pytest
-* Training
-  pythontest.com/courses
-  pythontest.com/training
+[courses.pythontest.com](https://courses.pythontest.com)
 
 [.column]
-![inline](pythonbytes.png) ![inline](testandcode.png) ![inline:25%](book.jpeg)
-![inline](course.png) 
+![inline:40%](pytestcourse.jpeg)
 
 ---
 
-# Brian Okken 
+# Brian Okken - Lead Software Engineer
 [.build-lists: false]
 
 [.column]
-* Podcasts
-  Python Bytes / Test & Code
-* Books
-  Python Testing with pytest
-* Training
-  pythontest.com/courses
-  pythontest.com/training
-* Lead Software Engineer
-
-[.column]
-![inline](pythonbytes.png) ![inline](testandcode.png) 
-![inline](book.jpeg) ![inline](course.png) 
-![inline](cmp180.jpg) ![inline](cmw270.jpg) 
-
----
-# System level testing
-[.build-lists: false]
-### Is what led me to pytest
-
-![inline](cmp180.jpg) ![inline](cmw100.jpg) 
-![inline](cmw270.jpg) ![inline](cmw500.jpg)
-
----
-
-# Why?
-
----
-
-
-# multi-level pytest fixtures
-[.build-lists: false]
-[.column]
-* Setup: connect, reset, configure, ...
-* Teardown: reset switches, check logs, ...
-* Multiple Levels: session, module, function, ...
+* Currently at Rohde & Schwarz 
+* Wireless Communication
+* Measurements
+* Embedded Code :  C++ 
+* Testing : Python + pytest
 
 [.column]
 ![inline](cmp180.jpg) 
-![inline](cmw100.jpg) 
-![inline](cmw270.jpg) 
-![inline](cmw500.jpg)
-
----
-# pytest fixtures are awesome
----
-# pytest is awesome
----
-# you are awesome
----
-# you're here, right?
----
-# you will make 
-# fixtures so awesome 
-# you want to share them
+![inline](cmx500.jpg) 
 
 ---
 
-# Fixture crash course
+# TDD
+## Is TDD Still Relevant?
 
 ---
 
-[.build-lists: false]
+# TDD
+## Is TDD Still Relevant?
+## Yes, but don't be dumb about it.
 
-[.column]
+^Some presenter notes
 
-See:
+---
 
-* Ch 3 for fixtures
-* Ch 15 for building plugins
-* Ch 11 includes 
-    * tox 
-    * GitHub Actions
+# TDD
 
-[.column]
+```mermaid
+flowchart LR
+    A(( ??? ))--> B(( ??? ))
+    B --> C(( ??? ))
+    C --> A
+```
 
-![fit](book.jpeg)
+---
+
+# TDD
+
+```mermaid
+flowchart LR
+    A([ Red ])--> B([ ???? ])
+    B --> C([ ???????? ])
+    C --> A
+```
+
+---
+
+# TDD
+
+```mermaid
+flowchart LR
+    A([ Red ])--> B([ Green ])
+    B --> C([ Refactor ])
+    C --> A
+```
+---
+---
+---
+---
+---
 
 ---
 [.build-lists: false]
 [.autoscale: true]
 
-# Keep in touch
+# Contact
 
 [.column]
+* [leantdd.com](https://leantdd.com)
+  Lean TDD book
+  paperback, digital, and audio versions
 * [pythontest.com](https://pythontest.com)
   training, courses, book
-* [pythonbytes.fm](https://pythonbytes.fm)
-  Python news and headlines directly to your earbuds
-* [testandcode.com](https://testandcode.com)
-  Coding with automation
-* [testandcode.com/contact](https://testandcode.com/contact)
-  Email contact form
 * [@brianokken@fosstodon.org](https://fosstodon.org/@brianokken)
   Mastodon 
+* [@brianokken@fosstodon.org](https://fosstodon.org/@brianokken)
+  Bluesky
   
 
 [.column]
-![inline:45%](pythontest.com.png) ![inline:40%](pythonbytes.png) 
-![inline:60%](testandcode.png) ![inline:35%](book.jpeg)
+![inline:45%](leantdd.png) ![inline:40%](pythontest.png) 
+![inline:35%](book.jpeg)
