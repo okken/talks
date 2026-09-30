@@ -1,17 +1,28 @@
-
-
 build-lists: true
-footer: Brian Okken | pythontest.com/tdd-pybay-2026 
+footer: Brian Okken | pythontest.com/tdd-pybay-2026
+list: bullet-character(-)
+header: alignment(left)
+
+# Is TDD Still Relevant?
+
+[.text: alignment(center)]
+[.header: alignment(left)]
+
+--- 
 
 # Is TDD Still Relevant?
 ## Yes, but don't be dumb about it.
 
 [.text: alignment(center)]
+[.header: alignment(left)]
 
-#### _
-### Brian Okken
+--- 
 
-[.hide-footer]
+[.text: alignment(left)]
+
+## Alternative title:
+
+# TDD according to Brian
 
 ---
 
@@ -24,30 +35,87 @@ footer: Brian Okken | pythontest.com/tdd-pybay-2026
 
 ---
 
-# Brian Okken - Podcasts
+# About Brian
+
+---
+# Podcasts
 [.build-lists: false]
 
 [.column]
+* Test and Code (2015 - 2025)
+  * 10 years 
+  * 238 epiosdes
+* Python Bytes (2016 - 2026) 
+* Python People (2023 - 2024) 
 
+[.column]
+![inline:55%](test_and_code.jpg) 
+![inline:35%](pythonbytes.png) 
+![inline:40%](python_people.png) 
+
+---
+# Podcasts
+[.build-lists: false]
+
+[.column]
+* Test and Code (2015 - 2025)
+* Python Bytes (2016 - 2026) 
+  * almost 10 years
+  * 482 episodes when I left
+  * almost 500 now
+* Python People (2023 - 2024) 
+
+[.column]
+![inline:55%](test_and_code.jpg) 
+![inline:35%](pythonbytes.png) 
+![inline:40%](python_people.png) 
+
+---
+# Podcasts
+[.build-lists: false]
+
+[.column]
+* Test and Code (2015 - 2025)
+* Python Bytes (2016 - 2026) 
+* Python People (2023 - 2024) 
+  * < 1 year
+  * 14 episodes
+
+[.column]
+![inline:55%](test_and_code.jpg) 
+![inline:35%](pythonbytes.png) 
+![inline:40%](python_people.png) 
+
+---
+
+# Podcasts
+[.build-lists: false]
+
+[.column]
 * Test and Code (2015 - 2025)
 * Python Bytes (2016 - 2026)
 * Python People (2023 - 2024)
-
+* Python People (2026 - )
 
 [.column]
-![inline:45%](pythonbytes.png) 
-![inline:45%](pythonbytes.png) 
+![inline:55%](test_and_code.jpg) 
+![inline:35%](pythonbytes.png) 
+![inline:40%](python_people.png) 
 
 ---
 
 # Python People will Return
-![fit](pythonbytes.png) 
+![](python_people.png) 
 
-[.text: alignment(center)]
-[.hide-footer]
-[pythonpeople.pythontest.com](https://pythonpeople.pythontest.com)
+## https://pythonpeople.pythontest.com
 
-### Previous Guests
+---
+
+# Python People will Return
+
+![](python_people.png) 
+
+## 14 Previous Guests
 
 [.column]
 
@@ -70,40 +138,58 @@ Nikita Karamov
 Rob Ludwick
 Shauna Gordon-McKeon
 
----
-
-# Brian Okken - Books
-[.build-lists: false]
-
-[.column]
-* Python Testing with pytest
-* Lean TDD
-
-[.column]
-![inline:40%](book1.jpg) ![inline:40%](book.jpeg)
-![inline:40%](leantdd.jpeg)
 
 ---
 
-# Brian Okken - Courses
+# Courses
+
+![inline:fit](complete_pytest_bundle.png)
+
+^Most people by the bundle
+
+---
+
+# Courses
+
+![inline](part1.png) ![inline](part2.png) 
+![inline](part3.png)
+
+^But it's in 3 parts and they are available separately.
+Hundreds of people have signed up for the course.
+
+---
+
+# Books
 [.build-lists: false]
 
-[.column]
-[courses.pythontest.com](https://courses.pythontest.com)
+![inline:fit](book1.jpg) ![inline:fit](book.jpeg) ![inline:fit](lean_tdd.png)
 
-[.column]
-![inline:40%](pytestcourse.jpeg)
+^It's based on this middle book, the 2nd edition of Python Testing with pytest. 
+And now Lean TDD
+
+---
+
+# The topic of this talk
+[.build-lists: false]
+
+![inline:fit](lean_tdd.png) ![inline:fit](lean_tdd.png) ![inline:fit](lean_tdd.png)
+
+---
+
+# But let's back up
 
 ---
 
 # Brian Okken - Lead Software Engineer
-[.build-lists: false]
+[.build-lists: true]
+[.list: bullet-character(-)]
 
 [.column]
-* Currently at Rohde & Schwarz 
+* Started at HP, then Agilent
+* Now at Rohde & Schwarz 
 * Wireless Communication
-* Measurements
-* Embedded Code :  C++ 
+* Measurements & Signaling
+* Embedded Code : C++ 
 * Testing : Python + pytest
 
 [.column]
@@ -113,137 +199,373 @@ Shauna Gordon-McKeon
 ---
 
 # Satellite & Component Test Systems
+[.list: bullet-character(-)]
 
-* Racks 1-4 wide, full of instruments, cables, signal switch boxes
-* Small team, each an expert in something different
-* Few scheduled meetings - mostly ad hoc, as needed
-* Close proximity, high cube walls for focused work
-* Direct access to a domain expert with real customer experience
+[.column]
+![inline](test_rack.jpg) 
 
-^We got a lot right, but not testing. No automated tests - manual, and only by us. No separate QA. Manual testing sucks. But there was one release: the code shipped on the computer in the rack.
+[.column]
+* Hewlett-Packard (pre-split)
+* Instrument drivers, GUI coding, system utilities, etc.
+* Long dev cycle, few releases
+* Dev team manual testing
+* I don't like manual testing
+
+^this is an R&S rack. I was working at HP at the time, but I don't have any pics of those.
+^Manual testing sucks, but having the development team test throughout the development cycle, then on system, is very efficient. Lots of bugs don't even get filed, they just get fixed. A problem with manual testing, though, is keeping them fixed.
 
 ---
 
-# Spectrum Analyzer
-## CDMA Cellular Measurements
+# Spectrum Analyzer 
+[.list: bullet-character(-)]
 
-* First phones without a huge battery pack
-* Worked closely with the DSP engineer - UI down to hardware
-* Lots of automation in our process to speed up coding
-* Separate QA team, but we coded bones-out / tracer-bullet style
-* QA wrote tests while we developed - tests lagged by ~1 week
-* A rep sat in our team meetings; docs writers found great defects
+[.column]
 
-^It's great to fix a sucky API before it hits a customer. This job is where "bones-out" first clicked for me as a way to let testing keep pace with development.
+* UI+API down to DSP
+* Seeds of Bones-out development
+* Real time 
+* Limited hardware resources
+* Creative coding solutions
+* Separate QA, but close by
+
+^Lots of automation
+Tests were mostly ready as software was ready
+
+[.column]
+
+![inline](spec-an.jpg)
+
+^Next a specan
+It's great to fix a sucky API before it hits a customer. This job is where "bones-out" first clicked for me as a way to let testing keep pace with development.
 
 ---
 
 # Communication Test Box
 
-* Signal generator + full protocol stack + spectrum analyzer + receive stack
-* Essentially: acts as a cell tower and full backend to test wireless devices
-* Super fun. Super complex. Lots of people, teams, hardware, code.
-* This is where I learned TDD and tried to apply it myself
-* Separate QA team again
+[.column]
 
-^I wanted my code working before it went to QA - tired of manually testing my own stuff. But large, multi-team orgs breed inefficiency.
+![inline](8960.jpg)
 
----
+[.column]
 
-# The Bug Report Loop
+* A cell tower in a box
+* Complex product, complex architecture
+* Separate QA
+* Split between 
+  * acceptance tests (QA)
+  * developer tests (DEV)
 
-* I think I've tested my code
-* Days/weeks later: a bug report from QA finds its way to me
-* I can't run their failing test - no access to their dedicated racks
-* So: manually reproduce, or write a small snippet to repro
-* If I can't repro: try a fix, hope, ask a test engineer to check
-
-^I wanted to run those final validation tests myself. It would've been so much easier to do the work right the first time if we'd had those tests during development. I really did think TDD was about that. The way most people teach it, it's not.
+^Signal generator + full protocol stack + spectrum analyzer + receive stack
+Essentially: acts as a cell tower and full backend to test wireless devices
+Super fun. Super complex. Lots of people, teams, hardware, code.
 
 ---
 
-# A Detour: Oscilloscopes
+# Burnout driven learning
 
-* Took a break, worked on oscilloscope coding for a while
-* Introduced that team to automated test suites during development
+[.column]
 
-^Quick beat - just enough to show the idea kept traveling with me.
+* Pragmatic Programmer
+* Lean Software Development
+* Articles on XP & TDD
+* TDD by Example
+* Even a little Six Sigma
+
+[.column]
+![inline](prag-prog.jpg) ![inline](lean-software.webp)
+![inline](tdd-by-example.jpg)
+
+^I wanted my code working before it went to QA - tired of manually testing my own stuff. 
+
+---
+
+# Automate all the things
+
+[.column]
+
+Developer focused
+
+* Revamp build chain
+* Sped up library swapping
+* Started developer focused testing
+* Implemented a smoke test suite
+
+[.column]
+
+
+---
+
+# System acceptance tests off limits
+
+* QA owns acceptance tests
+* Specific QA instruments and cabling
+* I couldn't run the tests
+* I think I could see the code for the tests
+
+---
+
+# Defect Ping-Pong
+
+---
+
+[.hide-footer]
+
+```mermaid
+sequenceDiagram
+    Note left of QA: Test failure
+    QA->>Developer: Defect report 
+    Note right of Developer: Try manual steps
+    Developer->>QA: How do I reproduce it?
+    Note left of QA: Try manual steps
+    Note left of QA: Or code snippet
+    QA->>Developer: Reproduction steps
+    Note right of Developer: Reproduce defect
+    Note right of Developer: Fix
+    Developer->>QA: Attempted fix
+```
+
+^Those reproduction steps are an approximation of what the test is doing. So fix is "maybe a fix".
+
+---
+
+[.hide-footer]
+
+```mermaid
+sequenceDiagram
+    QA->>Developer: Still fails
+    Developer->>QA: Can I get logs?
+    QA->>Developer: Logs
+    Developer->>QA: Not those logs
+    QA->>Developer: Different Logs
+    Note right of Developer: Fix
+    Developer->>QA: New version
+    Note left of QA: Validate
+    Note left of QA: Close defect
+```
+
+---
+
+# What it should be
+
+---
+
+```mermaid
+sequenceDiagram
+    Note left of QA: Test failure
+    QA->>Developer: Defect report with test name
+    Note right of Developer: Run test
+    Note right of Developer: Maybe grab logs
+    Note right of Developer: Fix
+    Note right of Developer: Run test, verify fix
+    Note right of Developer: Close defect
+    Developer->>QA: New version
+    Note left of QA: Validate test suite
+```
+
+---
+
+# But we weren't there yet
+
+---
+
+# Ideas were brewing
+
+---
+
+# Oscilloscopes
+
+[.column]
+
+* Dev team 
+  * manual testing
+  * we started writing system level tests
+* Test reports and graphs
+* Which backfired
+
+[.column]
+
+![inline](scope.jpg)
+
+---
+
+# What get's reported will get misinterpreted
+
+---
+
+# What get's reported will get misinterpreted
+## more != better
+
+---
+
+# automated tests > manual tests
+
+## especially if you're the one doing it
+
+---
+
+# Lab full of clicking attenuators is fun
+
+^Our lab was really in the space of like 4 cubicles or something, with shelves lined with different models of scopes, all running the same versions. Automated software updates caused reboots all at once, and when a scope reboots, the power up self test checks all the attenuator settings, and they click. A 10-20 scopes all clicking is cool.
 
 ---
 
 # Back to Comms Testing, at R&S
 
-* Where I am now
-* No separate QA - the dev team does the testing
-* So I got to decide how to do this efficiently
-* That's the punchline of this talk: **Lean TDD**
+[.column]
+![inline](cmw500.jpg) 
+![inline](cmw100.jpg) 
 
-^We're going to move through this fast, but you can go at your own pace with a copy of the book - or better, grab the paperback + audiobook, read by yours truly.
+[.column]
+* Test runner was meh
+* So I wrote a new one 
+* Tests developed by
+  * team leads, developers, test engineers
 
 ---
+
+# Back to Comms Testing, at R&S
+
+[.column]
+![inline](cmw500.jpg) 
+![inline](cmw100.jpg) 
+
+[.column]
+* I took over as team lead
+* Migrated to pytest
+* Shifted testing left 
+* Quality went up
+
+----
+
+# Asking questions of domain experts while they're working on the problem is more efficient than asking them later.
+
+In my case, usually a DSP developer or hardware component designer.
+
+----
+
+[.column]
+
+# I'm used to writing code in the middle
+
+* And I'd still rather write system tests
+* Mostly because
+  * Requirements are written for the system
+  * Refactoring is good 
+
+[.column]
+![fit](you-are-here.png)
+
+----
+
+# Now
+
+[.column]
+![inline](cmp180.jpg) 
+![inline](cmx500.jpg) 
+
+[.column]
+* Acceptance test focus
+* Using Lean to fight complexity on all fronts
+* ATDD
+* A version pretty closely aligned with
+  * Lean TDD
+
+---
+
+# ATDD can work ...
+
+* but I swear you gotta hit that sucker just right
+
+---
+
+# ATDD can work ...
+
+* but I swear you gotta hit that sucker just right
+
+![fill](sledge-o-matic.jpg)
+
+^Any Gallagher fans? I grew up with Gallagher specials on HBO.
+Also George Carlin. Definitely some of my philosophical influences.
+
+---
+
+# And now AI is here 
+
+---
+
+# Slop happens
+
+---
+
+# We need for TDD now more than ever
+
+* Conventional forms of TDD aren't gonna cut it
+* Lean TDD is a better fit
+
+---
+
+# Why did I care about TDD?
+
+---
+
+# What did I want out of TDD?
+
+* To know my code works
+* That it stays working in future versions
+* To save time
+* And sure, quality is also important
+* Mostly to save time
+
+[.footer: *Design is an indirect benefit]
+ 
+---
+
+# It's Agile right?
+
+* TDD is an Agile practice
+* It should also be "agile" - with a lowercase a
+  - active, light, swift, nimble
+  - able to change direction quickly
+* Sounds good... should make us faster, right?
+
+^Set up the turn: this is the promise. Next section is where it went sideways.
+
+
+---
+
+# Time for a TDD Crash course
+
+---
+
+
 # TDD
-## Is TDD Still Relevant?
 
-^Ask the room directly. Let the silence/mumbling set up the "yes, but don't be dumb" punchline.
-
----
-
-# TDD
-## Is TDD Still Relevant?
-## Yes, but don't be dumb about it.
-
-^Reveal the actual thesis. This is the talk in one sentence - keep coming back to it.
-
----
-
-# We're going to cover
-
-* Why coding with tests is faster and easier than without tests
-* Why I think that (a little career history)
-* Why TDD matters more now than ever, with AI in the mix
-* How to do TDD in a sane way
-* And, in contrast, how to do it in an insane way (according to me)
-
-^Set expectations for the arc of the talk so the audience has a map.
-
----
-
-# Show of Hands
-
+^Show of hands
 * Who thinks they already know what TDD is?
 * Who's actually tried it?
 * Who thinks it's more trouble than it's worth?
 
-^Get hands up 3 times. Keep it fast, don't let it turn into a discussion yet - just a pulse check to reference later ("remember when you raised your hand...").
+---
+
+
+# Test First
+## from Extreme Programming (XP)
 
 ---
 
-# Classic TDD
+# Original Recipe TDD
 
-## Extreme Programming's "test first"
-
-^Quick history: XP (late 90s) -> "test first programming" -> TDD after Kent Beck's 2002 book. Ask "who's tried Extreme Programming? Still doing it?" as one more quick hand-raise.
-
----
-
-# Classic TDD
-
-```mermaid
-flowchart LR
-    A([ Red ])--> B([ Green ])
-    B --> C([ Refactor ])
-    C --> A
-```
-
-* Red - write a failing test
-* Green - simplest code to make it (and everything else) pass
-* Refactor - clean it up
-
-^This is the shorthand everyone remembers. It's from the book's preface, repeated throughout, so it's no surprise it's what stuck. But it's incomplete.
+* or Classic TDD 
+* or Classical TDD 
+* but not TDD Classic
+* ~~Coke Classic~~
+* We'll just call it TDD
 
 ---
 
-# What the book actually says
+# TDD Steps
+
+[.column]
 
 1. Quickly add a test.
 2. Run all tests and see the new one fail.
@@ -251,25 +573,48 @@ flowchart LR
 4. Run all the tests and see them all succeed.
 5. Refactor to remove duplication.
 
-^Read almost like pseudo-code. Note there's a missing piece even here...
+[.column]
+![fit](tdd-by-example.jpg)
+
+^From "Test Driven Development by Example"
+
+[.hide-footer]
 
 ---
 
-# The missing piece
+# Shorter Version
 
-## A running list of test cases
+[.column]
+1. Red 
+2. Green
+3. Refactor
 
-* Kent keeps a brainstormed list the whole way through the book
-* Crosses items off as he implements them
-* Adds new ones as he thinks of them
-* That list quietly answers "what's next?" and "when am I done?"
+[.column]
+![fit](tdd-by-example.jpg)
 
-^This list almost never makes it into how people describe/teach TDD. Red/Green/Refactor alone leaves big questions open.
+[.hide-footer]
+---
+
+# Shorter Version
+
+[.column]
+1. Red - write a failing test
+2. Green - simplest code to make it (and everything else) pass
+3. Refactor - clean it up
+
+[.column]
+![fit](tdd-by-example.jpg)
+
+^This is the shorthand everyone remembers. It's from the book's preface, repeated throughout, so it's no surprise it's what stuck. But it's incomplete.
+Both versions leave a lot of open qustions
+
+[.hide-footer]
 
 ---
 
-# Red/Green/Refactor leaves questions
+# Questions
 
+* What level to I test at? 
 * What does "simplest code" mean?
 * How do I know what test to write next?
 * When am I actually done?
@@ -278,15 +623,29 @@ flowchart LR
 
 ---
 
+# One missing piece
+
+## A running list of test cases
+
+* Kent keeps a brainstormed list the whole way through the book
+* Crosses items off as he implements them
+* Adds new ones as he thinks of them
+* That list quietly answers "what's next?" and "when am I done?"
+
+^This list almost never makes it into how people describe/teach TDD. 
+
+---
+
 # Canon TDD
 
-## 2023 - 21 years later
-
-<!-- picture idea: portrait or book cover of "Test Driven Development By Example", or a simple timeline 2002 -> 2023 -->
+* From Kent in 2023
+* 21 years after the book
 
 ^Kent Beck wrote "Canon TDD" to clarify what he actually meant. I asked if I could quote it verbatim - he said summarize it in my own words instead, so here's my summary.
 
 ---
+
+[.hide-footer]
 
 # Canon TDD
 
@@ -301,54 +660,55 @@ flowchart LR
 
 ---
 
-# The Promise of TDD
+# Where TDD Went Sideways
 
-* TDD is an Agile practice
-* Should also be "agile" - lowercase a
-  - active, light, swift, nimble
-  - able to change direction quickly
-* Sounds good... should make us faster, right?
-
-^Set up the turn: this is the promise. Next section is where it went sideways.
+* I don't think it's Kent's fault
+* A lot of people were teaching variations
+* And filling in the blanks with their own ideas
 
 ---
 
 # Where TDD Went Sideways
 
-## Separating system tests from unit tests
+* Testing units in isolation
+* Fixation on speed
+* Excessive mocking
+* "The second D is for design"  
+* "It's not about testing"
+* Testing functions over APIs
+* Separating acceptance tests from developer tests
+
+^Test is literally in the name. It's the first word!
+
+---
+
+# I was inspired by Lean Software Development
 
 [.column]
-### Then
-* GUI testing: fiddly pixel mapping, cumbersome scripts
+
+* Lean is a good magnifying glass
+* I started using it to look at TDD
 
 [.column]
-### Now
-* Playwright: fast, not pixel-level
-* (Testable UI design is still its own skill)
-
-^APIs, though, have always been awesome to test. The problem in the 90s wasn't testing philosophy, it was that fewer systems had an architecture where you could exercise the whole system through an API.
+![fit](lean-software.webp)
 
 ---
 
-# Where TDD Went Sideways
+# Also modern tools are better
 
-## QA dept vs. Development
-
-* A great test engineer is a great software engineer, **plus**:
-  - communication & clear writing skills
-  - deciphering vague requirements from stakeholders
-  - leading by example
-  - rapid task switching
-* That's a superset of dev skills, not a subset
-* (Wage disparities in some companies don't help either)
-
-^Some companies get this right. Let's put a pin in the rant and move on - don't dwell here live.
+## Obviously
 
 ---
 
-# Where TDD Went Sideways
+## Separating acceptance tests from developer tests
 
-## Fixation on fast tests
+* This separates QA and Dev
+* Creates the ping-pong
+* Creates massive waste
+
+---
+
+# Fixation on fast tests
 
 [.column]
 ### Then
@@ -363,67 +723,102 @@ flowchart LR
 
 ---
 
-# Where TDD Went Sideways
-
 ## Fixation on testing functions over APIs
 
 * This is where the real chaos starts
-* Refactor: move responsibility between subsystems, split a class in two...
-* Function-level test suite: havoc
-* API-level test suite: **no test changes necessary**
+* Refactoring changes implementation
+  * But leaves behavior unchanged
+* So focus tests on behavior
+  * Not implementation
+* Functions are implementation
+
+---
+
+## When Refactoring on medium to large scale
+
+* Function-level test suite
+  * absolute chaos
+
+* API-level test suite
+  * **no test changes necessary**
 
 ^This is the big one - the crux of the whole talk. Consider pausing/repeating this slide's point.
 
 ---
 
-# Alternative Approaches
+# Alternative TDD flavors
 
 * London / Mockist TDD
 * BDD (Behavior Driven Development)
 * ATDD (Acceptance Test Driven Development)
-* Lean TDD
+* And now Lean TDD*
 
 ^Quick tour of each, with a clear point of view on each.
+
+[.footer: *It's not really new]
 
 ---
 
 # London / Mockist TDD
 
-* Outside-in, mocks used as a design tool
-* So. Much. Work.
-* Tests implementation, not behavior
-* Tests are hard to read
-* Refactoring requires rewriting the scaffolding
+* Acceptance tests. Yay!
+* Tons of mocks. Boo!
+* Outside-in
+* But tests too much implementation
 
 ^Credit where due: London style is what pulled acceptance tests into the TDD conversation in the first place. That idea survives into BDD, ATDD, and Lean TDD.
 
 ---
 
-# BDD
-## Behavior Driven Development
+# BDD: Behavior Driven Development
 
-* Behaviors: yay!
-* Gherkin: boo!
-* Given / When / Then
+* Behaviors: Yay!
+* Gherkin: Boo!
+* Given/When/Then: Yay!
+  * It's a mental shift of how to think about
+  * Arrange/Act/Assert
 
 ^BDD-the-mindset (Dan North) is great: name tests after behavior, think in Given/When/Then. BDD-with-Gherkin turns acceptance criteria into code and requires an interpreter layer - extra process, extra handoffs, less learning. Keep the mindset, skip the pickles.
 
 ---
 
-# ATDD
-## Acceptance Test Driven Development
+# ATDD: Acceptance Test Driven Development
 
-* A **team** workflow, not just a solo one
-* Acceptance criteria -> acceptance tests -> production code
-* Great at describing team collaboration
-* ...but says nothing about building the subsystems and units underneath
+* A team workflow. Yay!
+* Acceptance criteria -> acceptance tests
+* Great at describing team collaboration for acceptance criteria
 
 ^This is very close to Lean TDD at the top level. The gap it leaves - what do you do below the acceptance test layer - is exactly what Lean TDD fills in.
 
 ---
 
 # Lean TDD
-## a.k.a. "Unified Field Theory for TDD"
+
+---
+
+# Lean TDD
+
+## Inspired by 
+
+* Canon TDD
+* BDD and ATDD
+* Lean Software Development
+* Experience working on large multi-team projects
+* Solo projects
+
+---
+
+# Lean TDD
+## All the good stuff, very little waste
+
+---
+
+# Lean TDD
+## ~~Tastes great. Less filling.~~ (already taken)
+
+---
+
+# Lean TDD: Handy wavy version
 
 * ATDD at the top
 * Subsystem/unit testing only as needed
@@ -436,25 +831,63 @@ flowchart LR
 
 ---
 
-# Lean TDD: Test at the Highest Level Reasonable
+# Test at the Highest Level Reasonable
 
 * Minimizes rework when refactoring
-* Which encourages refactoring - and second drafts
-* Stop shipping your first draft!
-  - Terrible practice for blog posts and homework
-  - Never done for books
-  - Why do it with software?
+* Encourages refactoring 
+* Allows a second draft, etc
+
+----
+
+# Stop shipping your first draft!
+
+- Terrible practice for blog posts and homework
+- Never done for books
+  - At least, I wouldn't do it
+- So why do it with software?
 
 ^This is the "so what" - refactoring-friendly tests are what let you actually revise your work.
 
 ---
 
-# Lean TDD: Let Everyone Run Every Test
+# The Misinterpreted Test Pyramid
+
+< TODO: put a pic here >
+
+---
+
+# The Actual Test Pyramid
+
+< TODO: put a pic here >
+
+---
+
+# The Testing Trophy - OG
+
+< TODO: put a pic here >
+
+---
+
+# The Testing Trophy - My Version
+
+< TODO: put a pic here >
+
+---
+
+# Don't play defect ping-pong
+
+---
+
+# Let Everyone Run Every Test
 
 * Minimize overlap of testing across levels
 * Run tests locally if at all possible
 
 ^Story: shared pool of hardware instruments. Reserve one matching a bug report, run the failing test locally, debug, grab logs. Compare to the old back-and-forth: "how did you set it up?", "how do I run this?", "try it again on x.y.z", "turn on logging BLAH and rerun" - that's pure waste. Let the developer run the test and poke at it themselves.
+
+---
+
+# Does this work with AI?
 
 ---
 
@@ -482,6 +915,10 @@ flowchart LR
   - Agent keeps re-running them while it debugs/fixes
 
 ^Equivalent to letting developers run tests QA already built - except the "QA" here can be me directing an agent.
+
+---
+
+# Let's talk Lean
 
 ---
 
@@ -605,14 +1042,14 @@ flowchart LR
 [.build-lists: false]
 [.autoscale: true]
 
-# Contact
+# Thank You
 
 [.column]
 * [leantdd.com](https://leantdd.com)
   Lean TDD book
   paperback, digital, and audio versions
 * [pythontest.com](https://pythontest.com)
-  training, courses, book
+  training, courses, books, blog
 * [@brianokken@fosstodon.org](https://fosstodon.org/@brianokken)
   Mastodon 
 * [@brianokken@fosstodon.org](https://fosstodon.org/@brianokken)
@@ -620,5 +1057,4 @@ flowchart LR
   
 
 [.column]
-![inline:45%](leantdd.png) ![inline:40%](pythontest.png) 
-![inline:35%](book.jpeg)
+![inline:fit](lean_tdd.png)
