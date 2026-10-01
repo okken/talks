@@ -333,9 +333,9 @@ Super fun. Super complex. Lots of people, teams, hardware, code.
 
 ---
 
-# Unit tests 
+# My "unit" tests
 
-## are really
+## were really
 
 # "functionality unit" tests 
 
@@ -442,6 +442,10 @@ sequenceDiagram
 
 ---
 
+# Next instrument 
+
+---
+
 # Oscilloscopes
 
 [.column]
@@ -449,7 +453,7 @@ sequenceDiagram
 * A more column-ish role
 * Below UI, above hardware
 * Dev team did testing
-* All teams did testing
+* I don't remember a QA dept, at least
 * Mostly manual
 * Yuk
 
@@ -463,11 +467,11 @@ sequenceDiagram
 
 [.column]
 
-* Also, communication was broken
-* I introduced 
-  * wikis
-  * lightweight work tracking
-  * automated feature tests
+Added
+
+* wikis
+* lightweight work tracking
+* test automation
 
 [.column]
 
@@ -481,16 +485,21 @@ sequenceDiagram
 
 * More devs started writing tests
 * Quality up, dev cycle faster
-* Managers started noticing - good
-* Graphs were misinterpreted - bad
+* Managers happy - good
+* Graphs misinterpreted - bad
 
 [.column]
 
 ![inline](scope.jpg)
 
+^A memorable story about that time. The R&D manager pulled me aside and asked what I would do to increase test coverage, and increase the quality of the tests.
+* I told him to pull one of the top software engineers in the group and one of the scope domain experts, and have them each spend at least half time focused on the question of "how do we know it's working".
+He told me I was insane.
+* I still hold that I was right.
+
 ---
 
-# Not full success, but I could taste it
+# High value system tests are awesome
 ## And I wanted more
 
 ---
@@ -506,7 +515,7 @@ sequenceDiagram
 * So I wrote a new one 
 * With tests developed by
   * developers 
-  * embedded test engineers
+  * test engineers embedded in the team
 
 ---
 
@@ -526,28 +535,31 @@ sequenceDiagram
 
 ----
 
-# Shift left
+# Shift left benefit
 
-## Confusion is quick to remedy when domain experts are still working on the problem.
+## Ambiguity is quick to remedy when domain experts are still working on the problem.
 
 ----
 
-# Shift left
+# Shift left benefit
 
 ## Most problems don't make it to a wide audience
 
 ----
 
-# More experiments
+# More shift left
 
 [.column]
 ![inline](cmp180.jpg) 
 ![inline](cmx500.jpg) 
 
 [.column]
-* ATDD: Acceptance Driven Development
-* A version close to Lean TDD
+* ATDD*: Acceptance Driven Development
 * Using Lean to fight complexity and waste on many fronts
+
+[.footer: *Our version of ATDD is very close to Lean TDD]
+
+^BTW, these boxes are CMP180, a wireless comms RF Measurement instrument, and the CMX500, same software architecture, but also has protocol stacks and signaling. So it can act like a cell tower or wifi router and simulate the whole other side, including internet protocols, even for browser testing or video streaming. It's a pretty amazing box.
 
 ---
 
@@ -812,260 +824,224 @@ Both versions leave a lot of open qustions
 
 ---
 
+[.build-lists: false]
+
 # Lean TDD
 
+## Steps and Strategies
+
 ---
+
+# Lean TDD Steps - Short version
+
+* Define Done 
+* Red
+* Green
+* Refactor
+
+--- 
+
+# Lean TDD Steps - Short version
+
+* Define Done <- This is the only new one
+* Red
+* Green
+* Refactor
+
+---
+
+# Define Done 
+
+## Clarify acceptance criteria and derive test cases
+
+* Write a list of acceptance criteria
+* As needed, expand each into a list of test cases
+
+---
+
+# Here's the full list of steps
+
+---
+
+* List acceptance criteria - **Define Done**
+* Expand one into a list of test cases.
+* Write a test - **Red**
+* Make it pass - **Green**
+* Optionally refactor - **Refactor**
+* Add to lists as needed
+* Repeat until done
+
+---
+
+# Lean TDD Steps - Full version
+
+[.column]
+1. List acceptance criteria
+2. Run the test suite
+3. Expand a criterion into a list of test cases
+4. Write a test
+5. Make it pass
+
+[.column]
+[.use-source-list-numbering]
+
+6. Run the test suite
+7. Optionally refactor
+8. Add to lists as needed
+9. Repeat until done
+
+[.hide-footer]
+
+---
+
+## Mostly Canon TDD starting with Acceptance Criteria
+
+---
+
+# Lean TDD Strategies 
+
+---
+
+# Lean TDD Strategies (1/3)
+
+* Test primarily through a system API
+* Design for an internal system API if necessary
+* Minimize visual testing
+
+---
+
+# Lean TDD Strategies (2/3)
+
+* Add component and subsystem test sub-suites as needed
+* Add unit tests as needed
+* Minimize tests tightly coupled to implementation
+* Use static analysis
+
+---
+
+# Lean TDD Strategies (3/3)
+
+* Use the testing trophy
+* Keep a single test suite
+* Develop with a bones-out approach 
+* Pay attention to process and waste
+* Automate 
+* Adapt
+
+---
+
 
 # Lean TDD
 
 * All projects, small to huge
 * All levels of testing
 * Dev and QA
-* Is "Unified Field Theory for testing" too grandiose? 
+* Maybe "Unified Field Theory for TDD"?
 
 ---
 
-# Lean TDD
+# All strategies discussed in the book
 
-## Inspired by 
+## Let's grab a couple
 
-* Canon TDD
-* BDD and ATDD
-* Lean Software Development
-* Experience working on large multi-team projects
-* Solo projects
+* Testing Trophy
+* Test primarily through a system API
+ 
 
 ---
 
-# Lean TDD
-## All the good stuff, very little waste
+# Testing Trophy - close to original
+
+[.column]
+* Kent C Dodds
+* "Write tests. Not too many. Mostly integration." 
+  * A blog post by Dodds
+  * based on a tweet from Guillermo Rauch
+
+[.column]
+![fit](test-trophy.svg)
+
+^- riff on Michael Pollan's "Eat food. Not too much. Mostly plants." First shape that actually convinced people the pyramid was wrong.
 
 ---
 
-# Lean TDD
-## ~~Tastes great. Less filling.~~ (already taken)
+# Testing Trophy - my drawing
+
+[.column]
+* My attempt at drawing a trophy
+* The labels might make sense for js 
+* Don't really match what I'm recommending
+
+[.column]
+![fit](trophy-original.jpeg)
 
 ---
 
-# Lean TDD: Handy wavy version
+# Testing Trophy - modified
 
-* ATDD at the top
-* Subsystem/unit testing only as needed
-* One test suite if at all possible
-* Room for developers *and* test engineers
-* Don't be wasteful. Ceremony as necessary.
-* The testing trophy - that rocks
+[.column]
+Better labels
 
-^This is the payoff of the whole "alternative approaches" tour - it's what I landed on after living through all the others.
+[.column]
+![fit](trophy-preferred.jpeg)
 
 ---
 
-# Test at the Highest Level Reasonable
+# Why?
+
+---
+
+# Why test primarily through a system API
+## or the highest level reasonable
 
 * Minimizes rework when refactoring
 * Encourages refactoring 
 * Allows a second draft, etc
+* Which means better quality code 
 
 ----
 
-# Stop shipping your first draft!
-
-- Terrible practice for blog posts and homework
-- Never done for books
-  - At least, I wouldn't do it
-- So why do it with software?
-
-^This is the "so what" - refactoring-friendly tests are what let you actually revise your work.
-
----
-
-# The Misinterpreted Test Pyramid
-
-< TODO: put a pic here >
-
----
-
-# The Actual Test Pyramid
-
-< TODO: put a pic here >
-
----
-
-# The Testing Trophy - OG
-
-< TODO: put a pic here >
-
----
-
-# The Testing Trophy - My Version
-
-< TODO: put a pic here >
-
----
-
-# Don't play defect ping-pong
-
----
-
 # Let Everyone Run Every Test
+## Not listed as a strategy but worth repeating
 
-* Minimize overlap of testing across levels
-* Run tests locally if at all possible
-
-^Story: shared pool of hardware instruments. Reserve one matching a bug report, run the failing test locally, debug, grab logs. Compare to the old back-and-forth: "how did you set it up?", "how do I run this?", "try it again on x.y.z", "turn on logging BLAH and rerun" - that's pure waste. Let the developer run the test and poke at it themselves.
+* Stop the defect ping-pong
+* Let everyone run every test
 
 ---
 
 # Does this work with AI?
 
+* It's actually a great fit
+
 ---
 
 # Coding and Testing with AI
 
-* Care what the system does -> write/review tests at that level
-* Care about your part of the system -> write/review tests there too
-* Willing to not review some AI-written code?
-  - Then decide if you need to review *its tests*
-  - Only safe if you trust the tests above it
-* Fixed, "do not modify" tests at higher levels = freedom below
-  - For AI, agents, subcontractors, interns, whoever
-
-^The guardrail framing: high level tests you trust let lower layers be a black box you don't have to personally review.
+* We care even more about system behavior now
+* And less about implementation details
+* So higher level tests are more valuable
 
 ---
 
-# Have Agents Use TDD
+# Lean - Value & Waste
 
-* Give agents a spec + a specific test suite to run
-* Huge win: I'm not manually re-testing after every change
-  - Same experience as QA <-> dev, except now I'm QA
-* If an agent writes the high-level tests too:
-  - I still review them against my own understanding
-  - Agent keeps re-running them while it debugs/fixes
-
-^Equivalent to letting developers run tests QA already built - except the "QA" here can be me directing an agent.
-
----
-
-# Let's talk Lean
-
----
-
-# Value & Waste
-
-* Lean: waste = anything that doesn't *directly* add value to the customer
+* Waste: anything that doesn't *directly* add value to the customer
 * We can't eliminate all waste
-* Tests are waste, in the strict Lean sense
-  - (yes, throw your tomatoes)
-* So: minimize tests, maximize value
-
-^Let that land for a second before moving to the trophy - it's meant to be a little provocative.
+* Maximize value
+* Minimize waste
 
 ---
 
-# The Test Pyramid
-## Mike Cohn, 2009
+# The book
 
-<!-- picture: resources/pyramid-original.jpeg (Lean TDD book) - "UI / Service / Unit" -->
+[.column]
 
-* Top: UI tests
-* Middle: Service tests
-* Base: Unit tests
+* Lots-o-links at [leantdd.com](https://leantdd.com)
+* Text version is ~100 pages
+* Audio book is about 2 hours or less.
 
-^Point was actually "do more service/API tests, UI testing is painful, don't do much of it." Most people heard "do mostly unit tests" instead.
-
----
-
-# The Misunderstood Pyramid
-
-<!-- picture: resources/pyramid-common.jpeg (Lean TDD book) - "E2E / Integration / Unit" -->
-
-* Top: E2E tests -> "avoid these"
-* Middle: Integration tests -> "someone else's problem"
-* Base: Unit tests -> "do mostly this"
-
-^This version is the one that did the damage. E2E isn't inherently brittle - APIs shouldn't be brittle at all. If your API-level tests are brittle, your product is brittle, not your tests.
-
----
-
-# Flip It
-
-<!-- picture: resources/pyramid-flipped.jpeg (Lean TDD book) -->
-
-* Large top: System API tests
-* Middle: Subsystem / component tests
-* Small point at bottom: unit tests
-
-^"Ice cream cone anti-pattern" objection = mostly manual regression testing with almost no automation at all. Not the same thing as deliberately choosing to test through stable APIs.
-
----
-
-# The Testing Trophy
-## Kent C. Dodds
-
-<!-- picture: resources/trophy-original.jpeg (Lean TDD book) -->
-
-* Top (small): E2E / UI tests
-* Bulk: Integration tests (~system-level, no UI)
-* Narrow stem: Unit tests
-* Base: Static analysis
-
-^"Write tests. Not too many. Mostly integration." - riff on Michael Pollan's "Eat food. Not too much. Mostly plants." First shape that actually convinced people the pyramid was wrong.
-
----
-
-# My Recommendation
-
-<!-- picture: resources/trophy-preferred.jpeg (Lean TDD book) -->
-
-* Static analysis - don't skip linting
-* A few focused unit/component tests for gnarly bits
-* **Bulk of tests at the highest API that makes sense**
-* Some UI tests - to test the UI, not the whole system
-
-^This is the shape I actually use, on personal projects, open source, and at work.
-
----
-
-# Shifting to Higher Level Tests
-
-* "Unified Field Theory" because it treats the whole test stack as one thing
-* No redundant tests across levels
-* Test at the highest level possible
-  - Maximizes zero-test-rework refactoring potential
-
-^Tie back to the earlier "function-level tests wreck refactors" slide - this is the fix.
-
----
-
-# Which Test Would You Rather See Fail?
-
-* Test A: a unit test some dev thought was important once
-* Test B: a system test tied directly to a customer requirement
-
-^Ask the room. If your system-level acceptance tests are thorough, a passing system suite plus one failing unit test is a much better place to be than the reverse. I still investigate unit test failures - I've even written my own tests stricter than the real requirement. But requirement-tied system tests are the ones I trust most.
-
----
-
-# Applying Lean TDD with Agents
-
-* Keep everything in source control
-* Instruct agents: don't delete tests, don't loosen assertions to force green
-* Instruct agents: ask before modifying existing test code
-* Always review test diffs before merging
-* Review every new test, especially ones tied to acceptance criteria
-
-^Real failure modes I've seen: tests that don't actually check the outcome, agents quietly weakening assertions, tests deleted so the suite passes. Treat agent-written code like an open source contribution - grateful for the help, but you're the one maintaining it.
-
----
-
-# RTFM
-
-* The book is ~100 pages
-* Audio book is short too (works great at 1.2-1.5x)
-* [leantdd.com](https://leantdd.com)
-
-^Plug Python People rebooting too if there's time.
+[.column]
+![inline:fit](lean_tdd.png)
 
 ---
 [.build-lists: false]

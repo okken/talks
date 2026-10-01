@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 340" role="img" aria-label="Testing trophy">
+  <rect width="320" height="340" fill="#fff"/>
+  <polygon points="160,34 300,86 20,86" fill="#fff" stroke="#000" stroke-width="3"/>
+  <polygon points="20,86 300,86 314,148 300,230 20,230 6,148" fill="#fff" stroke="#000" stroke-width="3"/>
+  <polygon points="20,230 300,230 220,286 100,286" fill="#fff" stroke="#000" stroke-width="3"/>
+  <polygon points="100,286 220,286 244,334 76,334" fill="#fff" stroke="#000" stroke-width="3"/>
+  <line x1="22" y1="86" x2="298" y2="86" stroke="#000" stroke-width="3"/>
+  <text x="160" y="70" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="700" fill="#000">E2E</text>
+  <text x="160" y="168" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="34" font-weight="700" fill="#000">Integration</text>
+  <text x="160" y="262" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#000">Unit</text>
+  <text x="160" y="315" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="700" fill="#000">Static</text>
+</svg>
