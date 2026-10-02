@@ -2,27 +2,22 @@ build-lists: true
 footer: Brian Okken | pythontest.com/tdd-pybay-2026
 list: bullet-character(-)
 header: alignment(left)
+slidenumbers: true
 
 # Is TDD Still Relevant?
-
-[.text: alignment(center)]
-[.header: alignment(left)]
 
 --- 
 
 # Is TDD Still Relevant?
 ## Yes, but don't be dumb about it.
 
-[.text: alignment(center)]
-[.header: alignment(left)]
 
 --- 
 
 # Slides
 
-[.text: alignment(center)]
-
 ## pythontest.com/tdd-pybay-2026 
+
 [.hide-footer]
 
 ---
