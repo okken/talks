@@ -16,11 +16,22 @@ slidenumbers: true
 # Brian Okken
 
 * Lead Software Engineer at Rohde & Schwarz
-* Podcast Host
-* Author
-* Online Course Creator
+* Wireless Communications
+* Mostly measurements
+* C++ : Mostly embedded code 
+* Python : Testing and automation
+* pytest : of course
 
-[.build-lists: false]
+---
+
+# Brian Okken
+
+But you may know me from 
+
+* podcasts
+* books
+* or maybe a pytest course
+
 
 ---
 # Podcasts
@@ -165,10 +176,6 @@ Shauna Gordon-McKeon
 # Lead Software Engineer
 [.build-lists: false]
 
-* Wireless Communication
-* Measurements & Signaling
-* Embedded Code : C++ 
-* Testing : Python + pytest
 
 ---
 
@@ -183,7 +190,16 @@ Raise your hand if
 * has an opinion about TDD?
 
 ^Yeah. Me too. Strong ones, that I've developed over the course of my career.
-So let's take a look at that quickly
+
+---
+
+# My career
+## A CS nerd in an EE world
+
+---
+
+# My career
+## Building software (and hardware), with tests
 
 ---
 
@@ -200,8 +216,6 @@ So let's take a look at that quickly
 * Dev team testing: Yay!
 * Manual testing: Boo!
 
-^this is an R&S rack. I was working at HP at the time, but I don't have any pics of those.
-^Manual testing sucks, but having the development team test throughout the development cycle, then on system, is very efficient. Lots of bugs don't even get filed, they just get fixed. A problem with manual testing, though, is keeping them fixed.
 
 ---
 
