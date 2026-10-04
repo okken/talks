@@ -54,7 +54,7 @@ But you may know me from
 [.column]
 * Test and Code, 2015 - 2025
   * 10 years 
-  * 238 epiosdes
+  * 238 episodes
 * Python Bytes, 2016 - 2026
 * Python People, 2023 - 2024
 
@@ -139,7 +139,7 @@ Shauna Gordon-McKeon
 ![](python_people.png) 
 
 * I've got a list started
-* Let me know if you wanna be on it
+* Let me know if you want to be on it
 * Format might change
 * Logo might change
 * The people will always be awesome
@@ -291,7 +291,7 @@ Raise your hand if
 
 But...
 
-* Can't run each others tests
+* Can't run each other's tests
 
 ---
 
@@ -601,7 +601,7 @@ Both versions leave a lot of open questions
 
 
 ^This is the shorthand everyone remembers. It's from the book's preface, repeated throughout, so it's no surprise it's what stuck. But it's incomplete.
-Both versions leave a lot of open qustions
+Both versions leave a lot of open questions
 
 [.hide-footer]
 
@@ -766,7 +766,7 @@ Both versions leave a lot of open qustions
 
 --- 
 
-# Lets take all the good stuff
+# Let's take all the good stuff
 ## Leave out the waste 
 ## and create ...
 
