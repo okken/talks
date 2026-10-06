@@ -983,7 +983,7 @@ Both versions leave a lot of open questions
   training, courses, books, blog
 * [@brianokken@fosstodon.org](https://fosstodon.org/@brianokken)
   Mastodon 
-* [@brianokken@fosstodon.org](https://fosstodon.org/@brianokken)
+* [@brianokken.bsky.social](https://bsky.app/profile/brianokken.bsky.social)
   Bluesky
   
 
